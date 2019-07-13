@@ -55,6 +55,7 @@ module alu(
     wire[31:0]      carry_wire;
     wire[31:0]      result_wire;
     genvar i;
+    reg zero_;
 
     // construct ALU from alu_top
     alu_top  alu_0(
@@ -89,28 +90,45 @@ module alu(
             // output
             if(ALU_control == `SUB_FUNCT) begin
                 result <= result_wire + 32'h00000002;
+                if((result_wire + 32'h00000002) == `ZeroWord) begin
+                    zero <= 1'b1;
+                    assign zero_ = 1'b1;
+                end else begin
+                    zero <= 1'b0;
+                    assign zero_ = 1'b0;
+                end
             end else if(ALU_control == `SLT_FUNCT) begin
                 if(result_wire < 32'hFFFFFFFE) begin
                     result <= 32'h00000001;
+                    zero <= 1'b0;
+                    assign zero_ = 1'b0;
                 end else begin
                     result <= 32'h00000000;
+                    zero <= 1'b1;
+                    assign zero_ = 1'b1;
                 end
             end else begin
                 result <= result_wire;
+                if(result_wire == `ZeroWord) begin
+                    zero <= 1'b1;
+                    assign zero_ = 1'b1;
+                end else begin
+                    zero <= 1'b0;
+                    assign zero_ = 1'b0;
+                end
             end
             
-            cout <= carry_wire[31];
-
-            if((carry_wire[31] == 1'b1) && (ALU_control == `ADD_FUNCT)) begin
-                assign overflow = 1'b1;
+            if((ALU_control == `ADD_FUNCT) || (ALU_control == `SUB_FUNCT)) begin
+                cout <= carry_wire[31];
             end else begin
-                assign overflow = 1'b0;
+                cout <= 1'b0;
             end
+            
 
-            if(result == `ZeroWord) begin
-                assign zero = 1'b1;
+            if((carry_wire[31] == 1'b1) && (ALU_control == `ADD_FUNCT) && zero_ != 1'b1) begin
+                overflow <= 1'b1;
             end else begin
-                assign zero = 1'b0;
+                overflow <= 1'b0;
             end
         end
         else begin
