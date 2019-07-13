@@ -12,6 +12,7 @@
 \usepackage{booktabs}
 \usepackage{listings}
 \usepackage{color}
+\usepackage{caption}
 
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
@@ -76,13 +77,28 @@
 
 \begin{document}
 \noindent
-
+\captionsetup[figure]{labelfont={bf},name={Fig.},labelsep=period}
 %========================================================================
 \noindent\framebox[\linewidth]{\shortstack[c]{
 \Large{\textbf{Computer Organization(DCP3362) Lab01}}\vspace{1mm}\\
 \footnotesize{\color{blue}$*$ Name:石育瑋  \quad ID:A073708 \quad Email: stoneonetwo1203@gmail.com}}}
 
 \section{Architecture diagrams}
+
+\begin{figure}[H]
+\centering
+\includegraphics[height=21cm]{fig/alu.png}
+\caption{alu模擬圖}
+\label{fig:alu}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[height=6cm]{fig/alu_top.png}
+\caption{alu$\_$top模擬圖}
+\label{fig:alu_top}
+\end{figure}
+
 
 \section{Hardware module analysis}
 
