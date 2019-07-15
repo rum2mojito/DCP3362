@@ -111,14 +111,14 @@
 \captionsetup[figure]{labelfont={bf},name={Fig.}}
 \captionsetup[table]{labelfont={bf},name={Tab.}}
 %========================================================================
-%\noindent\framebox[\linewidth]{\shortstack[c]{
-%\Large{\textbf{DCP3362 Computer Organization Lab01}}\vspace{1mm}\\
-%\footnotesize{\color{blue}$*$ Name: 石育瑋  \quad ID: A073708 \quad Email: stoneonetwo1203@gmail.com}}}
+\noindent\framebox[\linewidth]{\shortstack[c]{
+\Large{\textbf{DCP3362 Computer Organization Lab 1}}\vspace{1mm}\\
+\footnotesize{\color{blue}$*$ Name: 石育瑋  \quad ID: A073708 \quad Email: stoneonetwo1203@gmail.com}}}
 
-\begin{center}
-\Large{\textbf{Computer Organization Lab 1}}\vspace{1mm}\\
-\footnotesize{\color{blue}$*$ Name: 石育瑋  \quad ID: A073708 \quad Email: yuwei.shih.tw@gmail.com}
-\end{center}
+%\begin{center}
+%\Large{\textbf{Computer Organization Lab 1}}\vspace{1mm}\\
+%\footnotesize{\color{blue}$*$ Name: 石育瑋  \quad ID: A073708 \quad Email: yuwei.shih.tw@gmail.com}
+%\end{center}
 
 \section{Architecture diagrams}
 
@@ -165,6 +165,35 @@ module alu_top(
 \label{fig:alu_top_}
 \end{figure}
 
+在alu$\_$top的設計中:
+\begin{enumerate}
+\item 2個2-1 MUX 控制信號:
+\begin{itemize}
+\item (input) A$\_$invert
+\item (input) B$\_$invert
+\end{itemize}
+當A$\_$invert或B$\_$invert為1時，對src1或src2取NOT值輸出；而當A$\_$invert或B$\_$invert為0時，則輸出src1或src2。
+
+\item 1個4-1 MUX 控制信號:
+\begin{itemize}
+\item (input) operation
+\end{itemize}
+當operation為00時，進行AND運算。\\
+當operation為01時，進行OR運算。\\
+當operation為10時，進行ADD運算。\\
+當operation為11時，進行SLT運算，搭配(input) less信號。
+
+\item 輸出運算結果
+\begin{itemize}
+\item (output) result
+\end{itemize}
+
+\item 輸出進位
+\begin{itemize}
+\item (output) cout
+\end{itemize}
+\end{enumerate}
+
 \begin{figure}[H]
 \centering
 \begin{lstlisting}[caption={}]
@@ -185,7 +214,38 @@ module alu(
 \label{fig:alu_}
 \end{figure}
 
-在alu中呼叫了32個圖\ref{fig:alu_top_} alu$\_$top，其中 alu$\_$top 負責AND OR NOT ADD的運算，圖\ref{fig:alu_} alu則是將所有的控制值(ex:運算的controll、invert 與否等)傳進alu$\_$top以及對最後輸出的結果進行處理。
+在alu的設計中:
+\begin{enumerate}
+\item 2個ALU控制信號:
+\begin{itemize}
+\item (input) clk
+\item (input) rst$\_$n
+\end{itemize}
+當clk上沿時，才對運算結果等進行更新。\\
+當rst$\_$n為1時，ALU才會運作。
+
+\item 2個輸入srouce:
+\begin{itemize}
+\item (input) src1
+\item (input) src2
+\end{itemize}
+
+\item ALU控制信號
+\begin{itemize}
+\item (input) ALU$\_$control
+\end{itemize}
+控制關係在表\ref{tab:support}中。
+
+\item 4個輸出結果
+\begin{itemize}
+\item (output) result
+\item (output) zero
+\item (output) cout
+\item (output) overflow
+\end{itemize}
+\end{enumerate}
+
+在alu中呼叫了32個圖\ref{fig:alu_top_} alu$\_$top，其中 alu$\_$top 負責AND、OR、NOT、ADD的運算，圖\ref{fig:alu_} alu則是將所有的控制值(ex:運算的controll、invert等)傳進alu$\_$top以及對最後輸出的結果進行處理。
 
 \section{Experiment result}
 
@@ -298,7 +358,7 @@ end
 
 \section{Summary}
 
-這個Lab是我第一次接觸Verilog，學到很多東西，對計算機組織中ALU的架構也更加理解。最終實現6種指令:
+這個Lab是我第一次接觸Verilog，學到很多東西，對計算機組織中ALU的架構也更加理解，最終實現表\ref{tab:support}中的6種指令。
 \begin{table}[H]
 \centering
 \caption

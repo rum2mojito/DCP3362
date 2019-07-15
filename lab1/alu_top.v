@@ -47,7 +47,6 @@ module alu_top(
     reg           result;
     reg           cout;
     // local variables
-    reg[1:0]      add_tmp;
     reg          src1_;
     reg          src2_;
 
@@ -56,7 +55,6 @@ module alu_top(
         // initial
         result <= 1'b0;
         cout <= 1'b0;
-        add_tmp <= 2'b00;
         // handle invert
         if(A_invert == 1'b1) begin
             src1_ <= !src1;
@@ -77,13 +75,11 @@ module alu_top(
                 assign result = src1_ | src2_;
                 assign cout = 1'b0;
         end else if(operation == `ADD_ALU) begin
-                assign add_tmp = (src1_+src2_)+cin;
-                assign result = add_tmp[0];
-                assign cout = add_tmp[1];
+                assign cout = (src1_&src2_) + (src2_&cin) + (cin&src1_);
+                assign result = src1_ ^ src2_ ^ cin;
         end else if(operation == `SLT_ALU) begin
-                assign add_tmp = (src1_+src2_)+cin;
-                assign result = add_tmp[0];
-                assign cout = add_tmp[1];
+                assign cout = (src1_&src2_) + (src2_&cin) + (cin&src1_);
+                assign result = src1_ ^ src2_ ^ cin;
         end
     end
 
