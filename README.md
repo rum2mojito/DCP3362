@@ -1,2 +1,2 @@
-# DCP3362
-DCP3362 labs
+# DCP3362 2019 Summer
+NCTU Computer Organization DCP3362 Labs
