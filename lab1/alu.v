@@ -1,3 +1,5 @@
+
+// A073708 石育瑋
 `timescale 1ns/1ps
 `include "constant.v"
 
@@ -125,8 +127,8 @@ module alu(
             end
             
 
-            if((carry_wire[31] == 1'b1) && (ALU_control == `ADD_FUNCT) && zero_ != 1'b1) begin
-                overflow <= 1'b1;
+            if(ALU_control == `ADD_FUNCT) begin
+                overflow <= carry_wire[30] ^ carry_wire[31];
             end else begin
                 overflow <= 1'b0;
             end
