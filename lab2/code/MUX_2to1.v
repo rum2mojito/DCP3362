@@ -16,7 +16,7 @@ module MUX_2to1(
                data_o
                );
 
-parameter size = 0;			   
+parameter size = 32;			   
 			
 //I/O ports               
 input   [size-1:0] data0_i;          
@@ -28,6 +28,15 @@ output  [size-1:0] data_o;
 reg     [size-1:0] data_o;
 
 //Main function
+always@(*) begin
+    if(select_i == 1'b0) begin
+        data_o <= data0_i;
+    end else if(select_i == 1'b1) begin
+        data_o <= data1_i;
+    end else begin
+        data_o <= 8'hxxxxxxxx;
+    end
+end
 
 endmodule      
           

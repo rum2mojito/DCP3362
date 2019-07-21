@@ -8,6 +8,7 @@
 //----------------------------------------------
 //Description: 
 //--------------------------------------------------------------------------------
+`include "Constant.v"
 
 module Decoder(
     instr_op_i,
@@ -38,6 +39,39 @@ reg            Branch_o;
 
 
 //Main function
+always@(*) begin
+	if(instr_op_i == `R_FORMAT) begin
+		ALU_op_o <= `ALU_OP_R;
+		ALUSrc_o <= 1'b0;
+		RegWrite_o <= 1'b1;
+		RegDst_o <= 1'b1;
+		Branch_o <= 1'b0;
+	end else if(instr_op_i == `ADDI) begin
+		ALU_op_o <= `ALU_OP_ADDI;
+		ALUSrc_o <= 1'b1;
+		RegWrite_o <= 1'b1;
+		RegDst_o <= 1'b1;
+		Branch_o <= 1'b0;
+	end else if(instr_op_i == `SLTI) begin
+		ALU_op_o <= `ALU_OP_SLTI;
+		ALUSrc_o <= 1'b1;
+		RegWrite_o <= 1'b1;
+		RegDst_o <= 1'b0;
+		Branch_o <= 1'b0;
+	end else if(instr_op_i == `BEQ) begin
+		ALU_op_o <= `ALU_OP_BEQ;
+		ALUSrc_o <= 1'b0;
+		RegWrite_o <= 1'b0;
+		RegDst_o <= 1'b0;
+		Branch_o <= 1'b1;
+	end else begin
+		ALU_op_o <= 3'bxxx;
+		ALUSrc_o <= 1'bx;
+		RegWrite_o <= 1'bx;
+		RegDst_o <= 1'bx;
+		Branch_o <= 1'bx;
+	end
+end
 
 endmodule
 

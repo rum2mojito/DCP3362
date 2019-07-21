@@ -18,25 +18,32 @@ input         clk_i;
 input         rst_i;
 
 //Internal Signles
+wire[31:0] instr_wire_in;
+wire[31:0] instr_wire_out;
+wire[31:0] pc_add_4;
 
+wire[31:0] tmp1;
+wire[31:0] tmp2;
+
+assign pc_add_4 = 4'h4;
 
 //Greate componentes
 ProgramCounter PC(
-        .clk_i(),      
-	    .rst_i (),     
-	    .pc_in_i() ,   
-	    .pc_out_o() 
+        .clk_i(clk_i),      
+	    .rst_i (rst_i),     
+	    .pc_in_i(instr_wire_in) ,   
+	    .pc_out_o(instr_wire_out) 
 	    );
 	
 Adder Adder1(
-        .src1_i(),     
-	    .src2_i(),     
-	    .sum_o()    
+        .src1_i(instr_wire_out),     
+	    .src2_i(pc_add_4),     
+	    .sum_o(instr_wire_in)    
 	    );
 	
 Instr_Memory IM(
-        .pc_addr_i(),  
-	    .instr_o()    
+        .pc_addr_i(instr_wire_out),  
+	    .instr_o(tmp2)    
 	    );
 
 MUX_2to1 #(.size(5)) Mux_Write_Reg(
