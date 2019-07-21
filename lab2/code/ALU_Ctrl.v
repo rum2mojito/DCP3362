@@ -8,6 +8,7 @@
 //----------------------------------------------
 //Description: 
 //--------------------------------------------------------------------------------
+`include "Constant.v"
 
 module ALU_Ctrl(
           funct_i,
@@ -28,7 +29,27 @@ reg        [4-1:0] ALUCtrl_o;
 
        
 //Select exact operation
-
+always@(*) begin
+    if(ALUOp_i == `ALU_OP_R) begin
+        if(funct_i == `ALU_FUNCT_ADD) begin
+            ALUCtrl_o <= `ADD_CTRL;
+        end else if(funct_i == `ALU_FUNCT_SUB) begin
+            ALUCtrl_o <= `SUB_CTRL;
+        end else if(funct_i == `ALU_FUNCT_AND) begin
+            ALUCtrl_o <= `AND_CTRL;
+        end else if(funct_i == `ALU_FUNCT_OR) begin
+            ALUCtrl_o <= `OR_CTRL;
+        end else if(funct_i == `ALU_FUNCT_SLT) begin
+            ALUCtrl_o <= `SLT_CTRL;
+        end
+    end else if(ALUOp_i == `ALU_OP_ADDI) begin
+        ALUCtrl_o <= `ADD_CTRL;
+    end else if(ALUOp_i == `ALU_OP_SLTI) begin
+        ALUCtrl_o <= `SLT_CTRL;
+    end else if(ALUOp_i == `ALU_OP_BEQ) begin
+        ALUCtrl_o <= `SUB_CTRL;
+    end
+end
 endmodule     
 
 

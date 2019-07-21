@@ -33,8 +33,6 @@ always@(*) begin
         data_o <= data0_i;
     end else if(select_i == 1'b1) begin
         data_o <= data1_i;
-    end else begin
-        data_o <= 8'hxxxxxxxx;
     end
 end
 
