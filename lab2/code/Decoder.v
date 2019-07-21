@@ -50,7 +50,7 @@ always@(*) begin
 		ALU_op_o <= `ALU_OP_ADDI;
 		ALUSrc_o <= 1'b1;
 		RegWrite_o <= 1'b1;
-		RegDst_o <= 1'b1;
+		RegDst_o <= 1'b0;
 		Branch_o <= 1'b0;
 	end else if(instr_op_i == `SLTI) begin
 		ALU_op_o <= `ALU_OP_SLTI;
