@@ -113,7 +113,7 @@
 %========================================================================
 
 \noindent\framebox[\linewidth]{\shortstack[c]{
-\Large{\textbf{DCP3362 Computer Organization Lab 1}}\vspace{1mm}\\
+\Large{\textbf{DCP3362 Computer Organization Lab 2}}\vspace{1mm}\\
 \footnotesize{\color{blue}$*$ Name: 石育瑋  \quad ID: A073708 \quad Email: stoneonetwo1203@gmail.com}}}
 
 %\begin{center}
@@ -123,27 +123,20 @@
 
 \section{Architecture diagrams}
 
-總共設計了2個 module，分別是 alu與alu$\_$top。
 \begin{figure}[H]
 \centering
-\includegraphics[height=19cm]{fig/alu.png}
-\caption{Data flow of alu}
-\label{fig:alu}
+\includegraphics[height=19cm]{fig/dataflow.png}
+\caption{Data flow of CPU}
+\label{fig:cpu}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[height=10cm]{fig/alu_top.png}
-\caption{Data flow of alu$\_$top}
-\label{fig:alu_top}
+\includegraphics[height=10cm]{fig/cpu.png}
+\caption{Architecture}
+\label{fig:archi}
 \end{figure}
 
-\begin{figure}[H]
-\centering
-\includegraphics[height=10cm]{fig/diagram.jpg}
-\caption{Diagram}
-\label{fig:diagram}
-\end{figure}
 
 \section{Hardware module analysis}
 
@@ -249,7 +242,7 @@ module alu(
 
 在alu中呼叫了32個圖\ref{fig:alu_top_} alu$\_$top，其中 alu$\_$top 負責AND、OR、NOT、ADD的運算，圖\ref{fig:alu_} alu則是將所有的控制值(ex:運算的controll、invert等)傳進alu$\_$top以及對最後輸出的結果進行處理。
 
-\section{Experiment result}
+\section{Finished part}
 
 實驗透過助教提供的Test Bench與ModelSim進行模擬測試，表\ref{tab:data}為輸入的測試數據表格，分別對6種不同的運算測驗，模擬出來得到的結果在表\ref{tab:result}中，圖\ref{fig:result}可以看到最終結果正確無偏差。
 \begin{table}[H]
