@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (MiKTeX 2.9.7000 64-bit) (preloaded format=xelatex 2019.4.9)  24 JUL 2019 19:14
+This is XeTeX, Version 3.14159265-2.6-0.999991 (MiKTeX 2.9.7000 64-bit) (preloaded format=xelatex 2019.4.9)  26 JUL 2019 10:34
 entering extended mode
 **./lab2_report.tex
 (lab2_report.tex
@@ -894,7 +894,29 @@ Package hyperref Info: Option `colorlinks' set `true' on input line 48.
 Package: xeCJK-listings 2019/04/07 v3.7.2 xeCJK patch file for listings
 \l__xeCJK_listings_max_char_int=\count326
 \l__xeCJK_listings_flag_int=\count327
-) (lab2_report.aux)
+) (lab2_report.aux
+
+LaTeX Warning: Label `fig:alu_top_' multiply defined.
+
+
+LaTeX Warning: Label `fig:alu_top_' multiply defined.
+
+
+LaTeX Warning: Label `fig:alu_top_' multiply defined.
+
+
+LaTeX Warning: Label `fig:alu_top_' multiply defined.
+
+
+LaTeX Warning: Label `fig:alu_top_' multiply defined.
+
+
+LaTeX Warning: Label `fig:archi' multiply defined.
+
+
+LaTeX Warning: Label `fig:archi' multiply defined.
+
+)
 \openout1 = `lab2_report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 109.
@@ -1025,38 +1047,45 @@ File: fig/cpu.png Graphic file (type bmp)
 
 ]
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <8> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 158.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 149.
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <6> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 158.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 149.
  [2] [3]
-File: fig/result.png Graphic file (type bmp)
-<fig/result.png>
+File: fig/res1.png Graphic file (type bmp)
+<fig/res1.png>
 
-[4] [5]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 386.
- [6]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 386.
+Overfull \hbox (1.12468pt too wide) in paragraph at lines 292--293
+ [][] 
+ []
+
+File: fig/res2.png Graphic file (type bmp)
+<fig/res2.png>
+[4]
+
+Package caption Warning: Unused \captionsetup[table] on input line 112.
+See the caption package documentation for explanation.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 317.
+[5]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 317.
  (lab2_report.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 386.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 386.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 317.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 317.
+Package rerunfilecheck Info: File `lab2_report.out' has not changed.
+(rerunfilecheck)             Checksum: 223B1971A0688728B66661B9AFEBA875.
 
 
-Package rerunfilecheck Warning: File `lab2_report.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
+LaTeX Warning: There were multiply-defined labels.
 
-Package rerunfilecheck Info: Checksums for `lab2_report.out':
-(rerunfilecheck)             Before: 3BBF4C9FC614254C5B2C7F4B6B5ADC18
-(rerunfilecheck)             After:  223B1971A0688728B66661B9AFEBA875.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 386.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 317.
  ) 
 Here is how much of TeX's memory you used:
- 28544 strings out of 427751
- 545430 string characters out of 3151129
- 964273 words of memory out of 3000000
- 32294 multiletter control sequences out of 15000+200000
+ 28536 strings out of 427751
+ 544915 string characters out of 3151129
+ 869273 words of memory out of 3000000
+ 32285 multiletter control sequences out of 15000+200000
  546560 words of font info for 103 fonts, out of 3000000 for 9000
  1328 hyphenation exceptions out of 8191
- 54i,9n,68p,417b,1069s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 54i,8n,68p,417b,1170s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on lab2_report.pdf (6 pages).
+Output written on lab2_report.pdf (5 pages).

@@ -1,4 +1,4 @@
-// A073708 石育瑋
+// A073708 YUWEI, SHIH
 // *****global variables*****
 `define ZeroWord 32'h00000000
 

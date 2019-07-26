@@ -140,246 +140,177 @@
 
 \section{Hardware module analysis}
 
+\begin{enumerate}
+\item
+在ProgramCounter的設計中:
+
+2個CPU 控制信號:
+\begin{itemize}
+\item (input) clk$\_$i
+\item (input) rst$\_$i
+\end{itemize}
+rst$\_$i為重置信號；clk$\_$i為clock cycle的控制信號，當clk$\_$i上沿時，(output) pc$\_$out$\_$o進行更新。
+
 \begin{figure}[H]
 \centering
 \begin{lstlisting}[caption={}]
-module alu_top(
-               src1,       //1 bit source 1 (input)
-               src2,       //1 bit source 2 (input)
-               less,       //1 bit less     (input)
-               A_invert,   //1 bit A_invert (input)
-               B_invert,   //1 bit B_invert (input)
-               cin,        //1 bit carry in (input)
-               operation,  //operation      (input)
-               result,     //1 bit result   (output)
-               cout,       //1 bit carry out(output)
-               );
+module ProgramCounter(
+    clk_i,
+	rst_i,
+	pc_in_i,
+	pc_out_o
+	);
 \end{lstlisting}
-\caption{alu$\_$top module}
+\caption{ProgramCounter}
 \label{fig:alu_top_}
 \end{figure}
 
-
-在alu$\_$top的設計中:
-\begin{enumerate}
-\item 2個2-1 MUX 控制信號:
-\begin{itemize}
-\item (input) A$\_$invert
-\item (input) B$\_$invert
-\end{itemize}
-當A$\_$invert或B$\_$invert為1時，對src1或src2取NOT值輸出；而當A$\_$invert或B$\_$invert為0時，則輸出src1或src2。
-
-\item 1個4-1 MUX 控制信號:
-\begin{itemize}
-\item (input) operation
-\end{itemize}
-當operation為00時，進行AND運算。\\
-當operation為01時，進行OR運算。\\
-當operation為10時，進行ADD運算。\\
-當operation為11時，進行SLT運算，搭配(input) less信號。
-
-\item 輸出運算結果
-\begin{itemize}
-\item (output) result
-\end{itemize}
-
-\item 輸出進位
-\begin{itemize}
-\item (output) cout
-\end{itemize}
-\end{enumerate}
+\item
+在Instr$\_$Memory的設計中:
+pc$\_$addr$\_$i為輸入指令地址，透過$\$$readmemb讀入我們設定的指令檔案，(output) instr$\_$o 輸出指令。
 
 \begin{figure}[H]
 \centering
 \begin{lstlisting}[caption={}]
-module alu(
-           clk,           // system clock              (input)
-           rst_n,         // negative reset            (input)
-           src1,          // 32 bits source 1          (input)
-           src2,          // 32 bits source 2          (input)
-           ALU_control,   // 4 bits ALU control input  (input)
-			  //bonus_control, // 3 bits bonus control input(input) 
-           result,        // 32 bits result            (output)
-           zero,          // 1 bit when the output is 0, zero must be set (output)
-           cout,          // 1 bit carry out           (output)
-           overflow       // 1 bit overflow            (output)
-           );
+module Instr_Memory(
+    pc_addr_i,
+	instr_o
+	);
 \end{lstlisting}
-\caption{alu module}
-\label{fig:alu_}
+\caption{Instr$\_$Memory}
+\label{fig:alu_top_}
 \end{figure}
 
-在alu的設計中:
-\begin{enumerate}
-\item 2個ALU控制信號:
+\item
+在Decoder的設計中:
 \begin{itemize}
-\item (input) clk
-\item (input) rst$\_$n
+\item (input) instr$\_$op$\_$i: 為instruction[31:26]
+\item (output) RedWrite$\_$o: 控制是否寫入寄存器
+\item (output) ALU$\_$op$\_$o: 提供ALU control
+\item (output) ALUSrc$\_$o: 控制ALU source的$2-1$ MUX
+\item (output) RegDst$\_$o: 控制選取RD的$2-1$ MUX
+\item (output) Branch$\_$o: 控制分支信號
 \end{itemize}
-當clk上沿時，才對運算結果等進行更新。\\
-當rst$\_$n為1時，ALU才會運作。
-
-\item 2個輸入srouce:
-\begin{itemize}
-\item (input) src1
-\item (input) src2
-\end{itemize}
-
-\item ALU控制信號
-\begin{itemize}
-\item (input) ALU$\_$control
-\end{itemize}
-控制關係在表\ref{tab:support}中。
-
-\item 4個輸出結果
-\begin{itemize}
-\item (output) result
-\item (output) zero
-\item (output) cout
-\item (output) overflow
-\end{itemize}
-\end{enumerate}
-
-在alu中呼叫了32個圖\ref{fig:alu_top_} alu$\_$top，其中 alu$\_$top 負責AND、OR、NOT、ADD的運算，圖\ref{fig:alu_} alu則是將所有的控制值(ex:運算的controll、invert等)傳進alu$\_$top以及對最後輸出的結果進行處理。
-
-\section{Finished part}
-
-實驗透過助教提供的Test Bench與ModelSim進行模擬測試，表\ref{tab:data}為輸入的測試數據表格，分別對6種不同的運算測驗，模擬出來得到的結果在表\ref{tab:result}中，圖\ref{fig:result}可以看到最終結果正確無偏差。
-\begin{table}[H]
-\centering
-\caption
-{實驗數據}
-\label{tab:data}
-\begin{tabular}{llll} \toprule
-operation & ALU code & src1 & src2 \\
-\midrule
-AND & 0000 & ffff0000 & 0000ffff
-\\
-OR & 0001 & 3113c398 & 088e4954
-\\
-ADD & 0010 & ffffffff & 00000001
-\\
-SUB & 0110 & 7eda5023 & 2ec36ae5
-\\
-SLT & 0111 & ffffffff & 00000001
-\\
-NOR & 1100 & 00000000 & 00000000
-\\ \bottomrule
-\end{tabular}
-\end{table}
-
-\begin{table}[H]
-\centering
-\caption
-{實驗結果}
-\label{tab:result}
-\begin{tabular}{ll} \toprule
-result & zcv \\
-\midrule
-00000000 & 100
-\\
-399fcbdc & 000
-\\
-00000000 & 110
-\\
-5016e53e & 010
-\\
-00000001 & 000
-\\
-ffffffff & 000
-\\ \bottomrule
-\end{tabular}
-\end{table}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=16cm]{fig/result.png}
-\caption{testbench測試結果}
-\label{fig:result}
+\begin{lstlisting}[caption={}]
+module Decoder(
+    instr_op_i,
+	RegWrite_o,
+	ALU_op_o,
+	ALUSrc_o,
+	RegDst_o,
+	Branch_o
+	);
+\end{lstlisting}
+\caption{Decoder}
+\label{fig:alu_top_}
+\end{figure}
+
+%
+\item
+在Sign$\_$Extend的設計中:
+\begin{itemize}
+\item (input) data$\_$i: 為16-bit的signed number
+\item (output) data$\_$o: 輸出經signed extension之data$\_$i的值
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\begin{lstlisting}[caption={}]
+module Sign_Extend(
+    data_i,
+    data_o
+    );
+\end{lstlisting}
+\caption{Sign$\_$Extend}
+\label{fig:alu_top_}
+\end{figure}
+
+%
+\item
+在Shift$\_$Left$\_$Two$\_$32的設計中:
+\begin{itemize}
+\item (input) data$\_$i: 為32-bit的number
+\item (output) data$\_$o: 輸出左移2-bit 之data$\_$i的值
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\begin{lstlisting}[caption={}]
+module Shift_Left_Two_32(
+    data_i,
+    data_o
+    );
+\end{lstlisting}
+\caption{Shift$\_$Left$\_$Two$\_$32}
+\label{fig:alu_top_}
+\end{figure}
+
+%
+\item
+在Reg$\_$File的設計中:
+\begin{itemize}
+\item (input) RSaddr$\_$i: RS地址
+\item (input) RTaddr$\_$i: RT地址
+\item (input) RDaddr$\_$i: RD地址
+\item (input) RDdata$\_$i: 要輸入RD的資料
+\item (input) RegWrite$\_$i: 是否寫入RD控制信號
+
+\item (output) RSdata$\_$o: RS資料
+\item (output) RTdata$\_$o: RT資料
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\begin{lstlisting}[caption={}]
+module Reg_File(
+    clk_i,
+	rst_i,
+    RSaddr_i,
+    RTaddr_i,
+    RDaddr_i,
+    RDdata_i,
+    RegWrite_i,
+    RSdata_o,
+    RTdata_o
+    );
+\end{lstlisting}
+\caption{Reg$\_$File}
+\label{fig:alu_top_}
+\end{figure}
+
+%%%
+\end{enumerate}
+\section{Finished part}
+
+除了以上modules的設計之外，還包括連接所有module之間的連線，以及3-bit ALUop自定義。下面是testbench測試出來的波形圖。
+
+\begin{figure}[H]
+\centering
+\includegraphics[height=10cm]{fig/res1.png}
+\caption{wave1}
+\label{fig:archi}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[height=10cm]{fig/res2.png}
+\caption{wave2}
+\label{fig:archi}
 \end{figure}
 
 \section{Problems you met and solutions}
 
-在寫LAB時，主要有遇到以下2個問題:
 \begin{enumerate}
-\item 分不清楚verilog裡"A $<=$ B;"與"assign A $=$ B;"之間的差異，導致在寫lab時不知什麼情況該用哪一種。
-\begin{solution}
-\item
-\begin{enumerate}
-\item assign a = b (Blocking assignment) : 執行順序不一定，
-\item a <= b (Nonblocking assignment) : 所有可同時值行的東西都要執行完一次後，才會前進到下一個時間點。
-\end{enumerate}
-\end{solution}
-
-\item 在連接alu$\_$top時，不知道如何生成32個alu$\_$top modules。
-\begin{solution}
-\item 先創建初始第一個alu$\_$top alu$\_$0，再利用for循環創建剩餘的31個alu$\_$top，最後將less wire連接。
-
-\begin{figure}[H]
-\centering
-\begin{lstlisting}[caption={}]
-// construct ALU from alu_top
-alu_top  alu_0(
-    .src1(src1[0]),
-    .src2(src2[0]),
-    .less(!carry_wire[31]),
-    .A_invert(ALU_control[3]),
-    .B_invert(ALU_control[2]),
-    .cin(1'b0),
-    .operation(ALU_control[1:0]),
-    .result(result_wire[0]),
-    .cout(carry_wire[0])
-);
-for(i=1; i<32; i=i+1) begin: generate_alu_top
-    alu_top  alu_k(
-        .src1 (src1[i]),
-        .src2 (src2[i]),
-        .less (1'b0),
-        .A_invert (ALU_control[3]),
-        .B_invert (ALU_control[2]),
-        .cin (carry_wire[i-1]),
-        .operation (ALU_control[1:0]),
-        .result (result_wire[i]),
-        .cout (carry_wire[i])
-    );
-end
-\end{lstlisting}
-\caption{Construct ALU from alu$\_$top}
-\label{fig:construct}
-\end{figure}
-\end{solution}
-
+\item 在組裝所有modules時wire常常連錯，最後參考老師ppt上的架構圖進行連接。
+\item 教材裡找不到3-bit的ALUop定義，後面自定義addi等指令。
 \end{enumerate}
 
 \section{Summary}
 
-
-這個Lab是我第一次接觸Verilog，學到很多東西，對計算機組織中ALU的架構也更加理解，最終實現表\ref{tab:support}中的6種指令。
-
-\begin{table}[H]
-\centering
-\caption
-{Supported Instructions}
-\label{tab:support}
-\begin{tabular}{llc} \toprule
-ALU Action & Name & ALU Control Input \\
-\midrule
-And & And & 0000
-\\
-Or & Or & 0001
-\\
-Add & Addition & 0010
-\\
-Sub & Subtraction & 0110
-\\
-Nor & Nor & 1100
-\\
-Slt & Set less than & 0111
-\\ \bottomrule
-\end{tabular}
-\end{table}
-
-
+這個Lab很考驗看波形圖debug的能力，才能找出哪裡的線接錯，以及modlue是否有誤。
 
 
 %========================================================================
