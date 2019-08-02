@@ -1,0 +1,71 @@
+C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Reg_File.v {1 {vlog -work work -stats=none C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Reg_File.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module Reg_File
+
+Top level modules:
+	Reg_File
+
+} {} {}} C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Instr_Memory.v {1 {vlog -work work -stats=none C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Instr_Memory.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module Instr_Memory
+
+Top level modules:
+	Instr_Memory
+
+} {} {}} C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/ProgramCounter.v {1 {vlog -work work -stats=none C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/ProgramCounter.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module ProgramCounter
+
+Top level modules:
+	ProgramCounter
+
+} {} {}} C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/ALU.v {1 {vlog -work work -stats=none C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/ALU.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module ALU
+
+Top level modules:
+	ALU
+
+} {} {}} C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Data_Memory.v {1 {vlog -work work -stats=none C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Data_Memory.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module Data_Memory
+
+Top level modules:
+	Data_Memory
+
+} {} {}} C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Shift_Left_Two_32.v {1 {vlog -work work -stats=none C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Shift_Left_Two_32.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module Shift_Left_Two_32
+
+Top level modules:
+	Shift_Left_Two_32
+
+} {} {}} C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/ALU_Ctrl.v {1 {vlog -work work -stats=none C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/ALU_Ctrl.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module ALU_Ctrl
+
+Top level modules:
+	ALU_Ctrl
+
+} {} {}} C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/testbench.v {1 {vlog -work work -stats=none C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/testbench.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module testbench
+
+Top level modules:
+	testbench
+
+} {} {}} C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Adder.v {1 {vlog -work work -stats=none C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Adder.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module Adder
+
+Top level modules:
+	Adder
+
+} {} {}} C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Sign_Extend.v {1 {vlog -work work -stats=none C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Sign_Extend.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module Sign_Extend
+
+Top level modules:
+	Sign_Extend
+
+} {} {}}

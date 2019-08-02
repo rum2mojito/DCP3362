@@ -1,0 +1,295 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab2/code
+vAdder
+Z0 !s110 1564712364
+!i10b 1
+!s100 T:Mkfl8`[Qe>3Y[MAdDAE0
+IRLJoYaGNLBKo_zD]ddEOk3
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dC:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code
+w1564665831
+8C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Adder.v
+FC:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Adder.v
+Z3 L0 13
+Z4 OP;L;10.4a;61
+r1
+!s85 0
+31
+!s108 1564712363.000000
+!s107 C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Adder.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Adder.v|
+!s101 -O0
+!i113 1
+Z5 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact -O0
+n@adder
+vALU
+R0
+!i10b 1
+!s100 WKjchiO1JV_5zFTOgKTb61
+Ib4YRh01YHfGV^hTDJBg;B1
+R1
+R2
+w1564665864
+8C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/ALU.v
+FC:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/ALU.v
+Z6 L0 14
+R4
+r1
+!s85 0
+31
+Z7 !s108 1564712364.000000
+!s107 Constant.v|C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/ALU.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/ALU.v|
+!s101 -O0
+!i113 1
+R5
+n@a@l@u
+vALU_Ctrl
+R0
+!i10b 1
+!s100 m5KcAGG8]gkKf74o<:GK=1
+I2dd;8X2AD<QG9b<L>d=Y;0
+R1
+R2
+w1564665850
+8C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/ALU_Ctrl.v
+FC:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/ALU_Ctrl.v
+R6
+R4
+r1
+!s85 0
+31
+R7
+!s107 Constant.v|C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/ALU_Ctrl.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/ALU_Ctrl.v|
+!s101 -O0
+!i113 1
+R5
+n@a@l@u_@ctrl
+vData_Memory
+R0
+!i10b 1
+!s100 0cDS]ISzSg4AmQZ[0f=kz1
+IPG8iaMGIXkI3@SS`a^2NV3
+R1
+R2
+w1398656586
+8C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Data_Memory.v
+FC:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Data_Memory.v
+L0 21
+R4
+r1
+!s85 0
+31
+R7
+!s107 C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Data_Memory.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Data_Memory.v|
+!s101 -O0
+!i113 1
+R5
+n@data_@memory
+vDecoder
+R0
+!i10b 1
+!s100 ::hP_6[S9b>^9L>7O^^NC1
+IILa[FVcEjBD`Fk1OWJX:<0
+R1
+R2
+w1564712123
+8C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Decoder.v
+FC:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Decoder.v
+R6
+R4
+r1
+!s85 0
+31
+R7
+!s107 Constant.v|C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Decoder.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Decoder.v|
+!s101 -O0
+!i113 1
+R5
+n@decoder
+vInstr_Memory
+R0
+!i10b 1
+!s100 1L1Dl6<2J[oMfz[XQ3@D<1
+I32LgaX7O[XJ_2@:Ee5?j?3
+R1
+R2
+w1398656512
+8C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Instr_Memory.v
+FC:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Instr_Memory.v
+L0 12
+R4
+r1
+!s85 0
+31
+R7
+!s107 C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Instr_Memory.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Instr_Memory.v|
+!s101 -O0
+!i113 1
+R5
+n@instr_@memory
+vMUX_2to1
+Z8 !s110 1564712365
+!i10b 1
+!s100 K<RO=^ajUnE;=13l11Xnf1
+IREQ[B5nA<1a7aInZVYo5b0
+R1
+R2
+w1564712044
+8C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/MUX_2to1.v
+FC:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/MUX_2to1.v
+R3
+R4
+r1
+!s85 0
+31
+R7
+!s107 C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/MUX_2to1.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/MUX_2to1.v|
+!s101 -O0
+!i113 1
+R5
+n@m@u@x_2to1
+vProgramCounter
+R8
+!i10b 1
+!s100 GUB>g:JQ0;6]4_=<aSnm23
+IGgBJJoob8Ca8Y_Fmf=K]53
+R1
+R2
+w1564712128
+8C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/ProgramCounter.v
+FC:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/ProgramCounter.v
+R3
+R4
+r1
+!s85 0
+31
+Z9 !s108 1564712365.000000
+!s107 C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/ProgramCounter.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/ProgramCounter.v|
+!s101 -O0
+!i113 1
+R5
+n@program@counter
+vReg_File
+R8
+!i10b 1
+!s100 j<6RXRndX]gjmY:4>U2=92
+Ign?BhkWFMKBg3:gZLh1A>2
+R1
+R2
+w1398654594
+8C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Reg_File.v
+FC:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Reg_File.v
+Z10 L0 11
+R4
+r1
+!s85 0
+31
+R9
+!s107 C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Reg_File.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Reg_File.v|
+!s101 -O0
+!i113 1
+R5
+n@reg_@file
+vShift_Left_Two_32
+R8
+!i10b 1
+!s100 9oWE3n:5:9241VI8MJ7Q41
+I:;MG7mb[L1]I_4SVS^Tb71
+R1
+R2
+w1564712134
+8C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Shift_Left_Two_32.v
+FC:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Shift_Left_Two_32.v
+L0 9
+R4
+r1
+!s85 0
+31
+R9
+!s107 C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Shift_Left_Two_32.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Shift_Left_Two_32.v|
+!s101 -O0
+!i113 1
+R5
+n@shift_@left_@two_32
+vSign_Extend
+R8
+!i10b 1
+!s100 >LGa8nc1]I0BfYN>;CX?n0
+IMOA?PfC[Ng<<HVk[]Zmb[2
+R1
+R2
+w1564712094
+8C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Sign_Extend.v
+FC:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Sign_Extend.v
+R3
+R4
+r1
+!s85 0
+31
+R9
+!s107 C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Sign_Extend.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Sign_Extend.v|
+!s101 -O0
+!i113 1
+R5
+n@sign_@extend
+vSimple_Single_CPU
+R8
+!i10b 1
+!s100 hW^@<98eFfXH=[i3b4fAf1
+I:ib34:]Bl:ihj;_@alb`M0
+R1
+R2
+w1398609058
+8C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Simple_Single_CPU.v
+FC:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Simple_Single_CPU.v
+R10
+R4
+r1
+!s85 0
+31
+R9
+!s107 C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Simple_Single_CPU.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/Simple_Single_CPU.v|
+!s101 -O0
+!i113 1
+R5
+n@simple_@single_@c@p@u
+vtestbench
+R8
+!i10b 1
+!s100 iI:hT^IWfG0nBGJFQoQKI3
+I_j3CcGQ=BKJNbM7bX=@Bc2
+R1
+R2
+w1525963426
+8C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/testbench.v
+FC:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/testbench.v
+L0 23
+R4
+r1
+!s85 0
+31
+R9
+!s107 C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/testbench.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Modeltech_pe_edu_10.4a/examples/DCP3362/lab3/code/testbench.v|
+!s101 -O0
+!i113 1
+R5
