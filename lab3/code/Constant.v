@@ -9,7 +9,7 @@
 `define BEQ 6'b000100
 `define LW 6'b100011
 `define SW 6'b101011
-`define JUMP 6'000010
+`define JUMP 6'b000010
 
 // ALU OP
 `define ALU_OP_R 3'b010
