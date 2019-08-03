@@ -40,6 +40,9 @@ Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 
 Top level modules:
 	Adder
 
+} {} {}} C:/Users/office01/Desktop/DCP3362/lab3/code/Constant.v {1 {vlog -work work -stats=none C:/Users/office01/Desktop/DCP3362/lab3/code/Constant.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+
 } {} {}} {C:/Users/office01/Desktop/DCP3362/lab3/code/MUX_2to1 copy.v} {1 {vlog -work work -stats=none {C:/Users/office01/Desktop/DCP3362/lab3/code/MUX_2to1 copy.v}
 Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
 -- Compiling module MUX_2to1
@@ -54,18 +57,14 @@ Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 
 Top level modules:
 	Reg_File
 
-} {} {}} C:/Users/office01/Desktop/DCP3362/lab3/code/Decoder.v {0 {vlog -work work -stats=none C:/Users/office01/Desktop/DCP3362/lab3/code/Decoder.v
+} {} {}} C:/Users/office01/Desktop/DCP3362/lab3/code/Decoder.v {1 {vlog -work work -stats=none C:/Users/office01/Desktop/DCP3362/lab3/code/Decoder.v
 Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
 -- Compiling module Decoder
-** Error: (vlog-13069) ** while parsing macro expansion: 'JUMP' starting at C:/Users/office01/Desktop/DCP3362/lab3/code/Decoder.v(125)
-** at C:/Users/office01/Desktop/DCP3362/lab3/code/Decoder.v(125): near "'0": syntax error, unexpected UNSIZED_BIT.
 
-** Error: (vlog-13069) C:/Users/office01/Desktop/DCP3362/lab3/code/Decoder.v(136): near "else": syntax error, unexpected else.
+Top level modules:
+	Decoder
 
-** Error: C:/Users/office01/Desktop/DCP3362/lab3/code/Decoder.v(138): (vlog-13205) Syntax error found in the scope following 'ALUSrc_o'. Is there a missing '::'?
-
-
-} {4.0 5.0 7.0 8.0 9.0 10.0} {}} C:/Users/office01/Desktop/DCP3362/lab3/code/Instr_Memory.v {1 {vlog -work work -stats=none C:/Users/office01/Desktop/DCP3362/lab3/code/Instr_Memory.v
+} {} {}} C:/Users/office01/Desktop/DCP3362/lab3/code/Instr_Memory.v {1 {vlog -work work -stats=none C:/Users/office01/Desktop/DCP3362/lab3/code/Instr_Memory.v
 Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
 -- Compiling module Instr_Memory
 
@@ -78,13 +77,6 @@ Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 
 
 Top level modules:
 	ProgramCounter
-
-} {} {}} C:/Users/office01/Desktop/DCP3362/lab3/code/Simple_Single_CPU.v {1 {vlog -work work -stats=none C:/Users/office01/Desktop/DCP3362/lab3/code/Simple_Single_CPU.v
-Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
--- Compiling module Simple_Single_CPU
-
-Top level modules:
-	Simple_Single_CPU
 
 } {} {}} C:/Users/office01/Desktop/DCP3362/lab3/code/ALU.v {1 {vlog -work work -stats=none C:/Users/office01/Desktop/DCP3362/lab3/code/ALU.v
 Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015

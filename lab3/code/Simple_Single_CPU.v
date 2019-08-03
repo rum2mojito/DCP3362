@@ -60,6 +60,14 @@ wire[31:0] branch_adder_o;
 
 wire pc_select;
 
+wire Jump_o;
+wire DataWrite_o;
+wire MemRead_o;
+wire MemWrite_o;
+wire[1:0] BranchType_o;
+
+wire[31:0] MemData_o;
+
 assign op = instr_o[31:26];
 assign rs = instr_o[25:21];
 assign rt = instr_o[20:16];
@@ -94,7 +102,7 @@ MUX_2to1 #(.size(5)) Mux_Write_Reg(
         .data_o(writeReg)
         );	
 		
-Reg_File RF(
+Reg_File Registers(
         .clk_i(clk_i),      
 	    .rst_i(rst_i) ,     
         .RSaddr_i(rs) ,  
@@ -113,10 +121,10 @@ Decoder Decoder(
         .ALUSrc_o(aluSrc),   
         .RegDst_o(regDst_o),   
         .Branch_o(branch),
-        .Jump_o(),
-	.DataWrite_o(),
-	.MemRead_o(),
-	.MemWrite_o(),
+        .Jump_o(Jump_o),
+	.DataWrite_o(DataWrite_o),
+	.MemRead_o(MemRead_o),
+	.MemWrite_o(MemWrite_o),
 	.BranchType_o()  
         );
 
@@ -147,12 +155,12 @@ ALU ALU(
 	    );
 
 Data_Memory Data_Memory(
-	.clk_i(),
-	.addr_i(),
-	.data_i(),
-	.MemRead_i(),
-	.MemWrite_i(),
-	.data_o()
+	.clk_i(clk_i),
+	.addr_i(aluResult),
+	.data_i(rs_data),
+	.MemRead_i(MemRead_o),
+	.MemWrite_i(MemWrite_o),
+	.data_o(MemData_o)
 	);
 		
 Adder Adder2(
@@ -165,11 +173,21 @@ Shift_Left_Two_32 Shifter(
         .data_i(signExtend_o),
         .data_o(branch_o)
         ); 		
-		
-MUX_2to1 #(.size(32)) Mux_PC_Source(
+
+wire[31:0] Mux_PC_Source1_o;
+wire[31:0] Jump_PC;
+assign Jump_PC = { pc_out_o[31:28], instr_o[25:0], 2'b00};
+MUX_2to1 #(.size(32)) Mux_PC_Source1(
         .data0_i(pc_adder_o),
         .data1_i(branch_adder_o),
         .select_i(pc_select),
+        .data_o(Mux_PC_Source1_o)
+        );
+
+MUX_2to1 #(.size(32)) Mux_PC_Source2(
+        .data0_i(Jump_PC),
+        .data1_i(Mux_PC_Source1_o),
+        .select_i(Jump_o),
         .data_o(pc_in_i)
         );	
 
