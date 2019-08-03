@@ -1,3 +1,4 @@
+//§õ©ù°a 0516327
 //Subject:     CO project 2 - Adder
 //--------------------------------------------------------------------------------
 //Version:     1
@@ -6,7 +7,6 @@
 //----------------------------------------------
 //Date:        
 //----------------------------------------------
-// A073708 YUWEI, SHIH
 //Description: 
 //--------------------------------------------------------------------------------
 
@@ -22,18 +22,16 @@ input  [32-1:0]	 src2_i;
 output [32-1:0]	 sum_o;
 
 //Internal Signals
-wire    [32-1:0]	 sum_o;
+wire   [32-1:0]	 sum_o;
 
 //Parameter
+reg    [32-1:0]  result;
 
 //Main function
-assign sum_o = src1_i + src2_i;
+always@(*)begin
+    result = {src1_i + src2_i};
+end
+
+assign sum_o = result;
 
 endmodule
-
-
-
-
-
-                    
-                    

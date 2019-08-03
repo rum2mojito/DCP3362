@@ -1,157 +1,63 @@
-// A073708 YUWEI, SHIH
+//§õ©ù°a 0516327
 //Subject:     CO project 2 - Decoder
 //--------------------------------------------------------------------------------
 //Version:     1
 //--------------------------------------------------------------------------------
 //Writer:      Luke
 //----------------------------------------------
-//Date:        
+//Date:        2010/8/16
 //----------------------------------------------
 //Description: 
 //--------------------------------------------------------------------------------
-`include "Constant.v"
 
 module Decoder(
-    instr_op_i,
-	RegWrite_o,
-	ALU_op_o,
-	ALUSrc_o,
-	RegDst_o,
-	Branch_o,
-	Jump_o,
-	DataWrite_o,
-	MemRead_o,
-	MemWrite_o,
-	BranchType_o
+	instr_op_i,
+	instr2_op_i,
+    Branch,
+	MemToReg,
+	BranchType,
+	Jump,
+	MemRead,
+	MemWrite,
+	ALUOp,
+	ALUSrc,
+	RegWrite,
+	RegDest,
+	JumpRegister
 	);
      
 //I/O ports
-input  [6-1:0] instr_op_i;
+input  [5:0] 	instr_op_i;
+input  [5:0] 	instr2_op_i;
 
-output         RegWrite_o;
-output [3-1:0] ALU_op_o;
-output         ALUSrc_o;
-output         RegDst_o;
-output         Branch_o;
-output         Jump_o;
-output         DataWrite_o;
-output         MemRead_o;
-output         MemWrite_o;
-output         BranchType_o;
- 
-//Internal Signals
-reg    [3-1:0] ALU_op_o;
-reg            ALUSrc_o;
-reg            RegWrite_o;
-reg            RegDst_o;
-reg            Branch_o;
-reg            Jump_o;
-reg            DataWrite_o;
-reg            MemRead_o;
-reg            MemWrite_o;
-reg            BranchType_o;
-
-//Parameter
+output         	Branch;
+output	[1:0]	MemToReg;
+output	[1:0]	BranchType;
+output			Jump;
+output			MemRead;
+output			MemWrite;
+output 	[2:0]	ALUOp;
+output         	ALUSrc;
+output         	RegWrite;
+output	[1:0]  	RegDest; 
+output			JumpRegister;
 
 
-//Main function
-always@(*) begin
-	if(instr_op_i == `R_FORMAT) begin
-		ALU_op_o <= `ALU_OP_R;
-		ALUSrc_o <= 1'b0;
-		RegWrite_o <= 1'b1;
-		RegDst_o <= 1'b1;
-		Branch_o <= 1'b0;
-		Jump_o <= 1'b1;
-		DataWrite_o <= 1'b0;
-		MemRead_o <= 1'b0;
-		MemWrite_o <= 1'b0;
-		BranchType_o <= 1'bx;
-	end else if(instr_op_i == `ADDI) begin
-		ALU_op_o <= `ALU_OP_ADDI;
-		ALUSrc_o <= 1'b1;
-		RegWrite_o <= 1'b1;
-		RegDst_o <= 1'b0;
-		Branch_o <= 1'b0;
-		Jump_o <= 1'b1;
-		DataWrite_o <= 1'b0;
-		MemRead_o <= 1'b0;
-		MemWrite_o <= 1'b0;
-		BranchType_o <= 1'bx;
-	end else if(instr_op_i == `SLTI) begin
-		ALU_op_o <= `ALU_OP_SLTI;
-		ALUSrc_o <= 1'b1;
-		RegWrite_o <= 1'b1;
-		RegDst_o <= 1'b0;
-		Branch_o <= 1'b0;
-		Jump_o <= 1'b1;
-		DataWrite_o <= 1'b0;
-		MemRead_o <= 1'b0;
-		MemWrite_o <= 1'b0;
-		BranchType_o <= 1'bx;
-	end else if(instr_op_i == `BEQ) begin
-		ALU_op_o <= `ALU_OP_BEQ;
-		ALUSrc_o <= 1'b0;
-		RegWrite_o <= 1'b0;
-		RegDst_o <= 1'b0;
-		Branch_o <= 1'b1;
-		Jump_o <= 1'b1;
-		DataWrite_o <= 1'b0;
-		MemRead_o <= 1'b0;
-		MemWrite_o <= 1'b0;
-		BranchType_o <= 1'bx;
-	end else if(instr_op_i == `LW) begin
-		ALU_op_o <= `ALU_OP_LW_SW;
-		ALUSrc_o <= 1'b1;
-		RegWrite_o <= 1'b1;
-		RegDst_o <= 1'b1;
-		Branch_o <= 1'b0;
-		Jump_o <= 1'b1;
-		DataWrite_o <= 1'b0;
-		MemRead_o <= 1'b1;
-		MemWrite_o <= 1'b0;
-		BranchType_o <= 1'bx;
-	end else if(instr_op_i == `SW) begin
-		ALU_op_o <= `ALU_OP_LW_SW;
-		ALUSrc_o <= 1'b1;
-		RegWrite_o <= 1'b0;
-		RegDst_o <= 1'bx;
-		Branch_o <= 1'b0;
-		Jump_o <= 1'b1;
-		DataWrite_o <= 1'b1;
-		MemRead_o <= 1'b0;
-		MemWrite_o <= 1'b1;
-		BranchType_o <= 1'bx;
-	end else if(instr_op_i == `JUMP) begin
-		ALU_op_o <= 3'bxxx;
-		ALUSrc_o <= 1'bx;
-		RegWrite_o <= 1'bx;
-		RegDst_o <= 1'bx;
-		Branch_o <= 1'bx;
-		Jump_o <= 1'b0;
-		DataWrite_o <= 1'b0;
-		MemRead_o <= 1'b0;
-		MemWrite_o <= 1'b0;
-		BranchType_o <= 1'bx;
-	end else begin
-		ALU_op_o <= 3'bxxx;
-		ALUSrc_o <= 1'bx;
-		RegWrite_o <= 1'bx;
-		RegDst_o <= 1'bx;
-		Branch_o <= 1'bx;
-		Jump_o <= 1'bx;
-		DataWrite_o <= 1'b0;
-		MemRead_o <= 1'b0;
-		MemWrite_o <= 1'b0;
-		BranchType_o <= 1'bx;
-	end
-end
+assign Branch = (~instr_op_i[5]) & (~instr_op_i[4]) & (~instr_op_i[3]) & (instr_op_i[2]) & (~instr_op_i[1]) & (~instr_op_i[0]);
+assign MemToReg[1] = (~instr_op_i[5]) & (~instr_op_i[4]) & (~instr_op_i[3]) & (~instr_op_i[2]) & (instr_op_i[1]) & (instr_op_i[0]);
+assign MemToReg[0] = (((instr_op_i[5]) & (~instr_op_i[4]) & (~instr_op_i[3]) & (~instr_op_i[2]) & (instr_op_i[1]) & (instr_op_i[0])) | ((~instr_op_i[5]) & (~instr_op_i[4]) & (instr_op_i[3]) & (~instr_op_i[2]) & (instr_op_i[1]) & (~instr_op_i[0])));
+assign BranchType[1] = instr_op_i[4];
+assign BranchType[0] = instr_op_i[4];
+assign Jump = ~(((~instr_op_i[5]) & (~instr_op_i[4]) & (~instr_op_i[3]) & (~instr_op_i[2]) & (instr_op_i[1]) & (~instr_op_i[0])) | ((~instr_op_i[5]) & (~instr_op_i[4]) & (~instr_op_i[3]) & (~instr_op_i[2]) & (instr_op_i[1]) & (instr_op_i[0])));
+assign MemRead = (instr_op_i[5]) & (~instr_op_i[4]) & (~instr_op_i[3]) & (~instr_op_i[2]) & (instr_op_i[1]) & (instr_op_i[0]);
+assign MemWrite = (instr_op_i[5]) & (~instr_op_i[4]) & (instr_op_i[3]) & (~instr_op_i[2]) & (instr_op_i[1]) & (instr_op_i[0]);
+assign ALUOp[2] = ((~instr_op_i[5]) & (~instr_op_i[4]) & (~instr_op_i[3]) & (~instr_op_i[2]) & (instr_op_i[1]) & (~instr_op_i[0])) | ((~instr_op_i[5]) & (~instr_op_i[4]) & (~instr_op_i[3]) & (~instr_op_i[2]) & (instr_op_i[1]) & (instr_op_i[0])) | ((~instr_op_i[5]) & (~instr_op_i[4]) & (instr_op_i[3]) & (~instr_op_i[2]) & (instr_op_i[1]) & (~instr_op_i[0]));
+assign ALUOp[1] = ((~instr_op_i[5]) & (~instr_op_i[4]) & (instr_op_i[3]) & (~instr_op_i[2]) & (~instr_op_i[1]) & (~instr_op_i[0])) | ((~instr_op_i[5]) & (~instr_op_i[4]) & (~instr_op_i[3]) & (instr_op_i[2]) & (~instr_op_i[1]) & (~instr_op_i[0]));
+assign ALUOp[0] = ~(((~instr_op_i[5]) & (~instr_op_i[4]) & (~instr_op_i[3]) & (~instr_op_i[2]) & (~instr_op_i[1]) & (~instr_op_i[0])) | ((~instr_op_i[5]) & (~instr_op_i[4]) & (~instr_op_i[3]) & (instr_op_i[2]) & (~instr_op_i[1]) & (~instr_op_i[0])) | ((~instr_op_i[5]) & (~instr_op_i[4]) & (instr_op_i[3]) & (~instr_op_i[2]) & (instr_op_i[1]) & (~instr_op_i[0])));
+assign ALUSrc = ((instr_op_i[5]) & (~instr_op_i[4]) & (~instr_op_i[3]) & (~instr_op_i[2]) & (instr_op_i[1]) & (instr_op_i[0])) | ((instr_op_i[5]) & (~instr_op_i[4]) & (instr_op_i[3]) & (~instr_op_i[2]) & (instr_op_i[1]) & (instr_op_i[0])) | ((~instr_op_i[5]) & (~instr_op_i[4]) & (instr_op_i[3]) & (~instr_op_i[2]) & (~instr_op_i[1]) & (~instr_op_i[0])) | ((~instr_op_i[5]) & (~instr_op_i[4]) & (instr_op_i[3]) & (~instr_op_i[2]) & (instr_op_i[1]) & (~instr_op_i[0]));
+assign RegWrite = ~(((instr_op_i[5]) & (~instr_op_i[4]) & (instr_op_i[3]) & (~instr_op_i[2]) & (instr_op_i[1]) & (instr_op_i[0])) | ((~instr_op_i[5]) & (~instr_op_i[4]) & (~instr_op_i[3]) & (~instr_op_i[2]) & (instr_op_i[1]) & (~instr_op_i[0])) | ((~instr_op_i[5]) & (~instr_op_i[4]) & (~instr_op_i[3]) & (instr_op_i[2]) & (~instr_op_i[1]) & (~instr_op_i[0])));
+assign RegDest[1] = (~instr_op_i[5]) & (~instr_op_i[4]) & (~instr_op_i[3]) & (~instr_op_i[2]) & (instr_op_i[1]) & (instr_op_i[0]);
+assign RegDest[0] = (~instr_op_i[5]) & (~instr_op_i[4]) & (~instr_op_i[3]) & (~instr_op_i[2]) & (~instr_op_i[1]) & (~instr_op_i[0]);
+assign JumpRegister = ((~instr_op_i[5]) & (~instr_op_i[4]) & (~instr_op_i[3]) & (~instr_op_i[2]) & (~instr_op_i[1]) & (~instr_op_i[0])) & ((~instr2_op_i[5]) & (~instr2_op_i[4]) & (instr2_op_i[3]) & (~instr2_op_i[2]) & (~instr2_op_i[1]) & (~instr2_op_i[0]));
 
 endmodule
-
-
-
-
-
-                    
-                    

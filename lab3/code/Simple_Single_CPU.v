@@ -1,4 +1,4 @@
-// A073708 YUWEI, SHIH
+//§õ©ù°a 0516327
 //Subject:     CO project 2 - Simple Single CPU
 //--------------------------------------------------------------------------------
 //Version:     1
@@ -19,177 +19,180 @@ input         clk_i;
 input         rst_i;
 
 //Internal Signles
-wire[31:0] pc_in_i;
-wire[31:0] pc_out_o;
-wire[31:0] pc_adder_o;
-wire[31:0] instr_o;
-wire[31:0] rs_data;
-wire[31:0] rt_data;
-
-wire[4:0] writeReg;
-
-// op code
-wire[5:0] op;
-
-// funct
-wire[5:0] funct;
-
-// rs, rt, rd
-wire[4:0] rs;
-wire[4:0] rt;
-wire[4:0] rd;
-wire[15:0] immediate;
-
-wire regDst_o;
-wire branch;
-wire aluSrc;
-wire regWrite;
-wire[2:0] aluOp;
-
-wire[3:0] aluCtrl;
-
-wire[31:0] signExtend_o;
-
-wire[31:0] aluSrc2;
-
-wire[31:0] aluResult;
-wire aluZero;
-
-wire[31:0] branch_o;
-wire[31:0] branch_adder_o;
-
-wire pc_select;
-
-wire Jump_o;
-wire DataWrite_o;
-wire MemRead_o;
-wire MemWrite_o;
-wire[1:0] BranchType_o;
-
-wire[31:0] MemData_o;
-
-assign op = instr_o[31:26];
-assign rs = instr_o[25:21];
-assign rt = instr_o[20:16];
-assign rd = instr_o[15:11];
-assign immediate = instr_o[15:0];
-assign funct = instr_o[5:0];
-assign pc_select = branch & aluZero;
-
+wire	[31:0]	pc_in;
+wire 	[31:0]	pc_out;
+wire 	[31:0]	instr;
+wire 	[31:0]	pc_add4;
+wire         	Branch;
+wire	[1:0]	MemToReg; 
+wire	[1:0]	BranchType; 
+wire			Jump; 
+wire			MemRead; 
+wire			MemWrite; 
+wire 	[2:0]	ALUOp; 
+wire         	ALUSrc; 
+wire         	RegWrite; 
+wire	[1:0]  	RegDest;  
+wire			JumpRegister; 
+wire 	[4:0]	WriteReg;
+wire 	[31:0]	Data1;
+wire 	[31:0]	Data2;
+wire 	[31:0]	WriteRegData;
+wire 	[3:0]	ALUCtrl_out;
+wire 	[31:0]	SignExtended;
+wire 	[31:0]	Data2_R;
+wire	[31:0]	ALUResult;
+wire	zero;
+wire	[31:0]	ReadData;
+wire	w1;
+wire	[31:0]	SignExtendShiftLeft;
+wire	[31:0]	add_pc_SESL;
+wire	[31:0]	Jump_in_1;
+wire	[31:0]	Jump_in_0;
+wire	[31:0]	Jump_out;
+wire	[27:0]	instrShiftLeft;
+wire	[4:0]	thirtyone = 5'b11111;
 //Greate componentes
 ProgramCounter PC(
         .clk_i(clk_i),      
 	    .rst_i (rst_i),     
-	    .pc_in_i(pc_in_i) ,   
-	    .pc_out_o(pc_out_o) 
+	    .pc_in_i(pc_in),   
+	    .pc_out_o(pc_out) 
 	    );
 	
 Adder Adder1(
-        .src1_i(pc_out_o),     
+        .src1_i(pc_out),     
 	    .src2_i(32'd4),     
-	    .sum_o(pc_adder_o)    
+	    .sum_o(pc_add4)    
 	    );
+		
+PC_instr PC_instr1(
+	.instr(instrShiftLeft),
+	.pc(pc_add4),
+	.PC_instr_o(Jump_in_0)
+    );
+	
+Shift_Left_Two_32 #(.size(28)) Shifter(
+        .data_i(instr[25:0]),
+        .data_o(instrShiftLeft)
+        ); 		
 	
 Instr_Memory IM(
-        .pc_addr_i(pc_out_o),  
-	    .instr_o(instr_o)    
+        .pc_addr_i(pc_out),  
+	    .instr_o(instr)    
 	    );
 
-MUX_2to1 #(.size(5)) Mux_Write_Reg(
-        .data0_i(rt),
-        .data1_i(rd),
-        .select_i(regDst_o),
-        .data_o(writeReg)
+MUX_3to1 #(.size(5)) Mux_Write_Reg(
+        .data0_i(instr[20:16]),
+        .data1_i(instr[15:11]),
+		.data2_i(thirtyone),
+        .select_i(RegDest),
+        .data_o(WriteReg)
         );	
 		
 Reg_File Registers(
         .clk_i(clk_i),      
-	    .rst_i(rst_i) ,     
-        .RSaddr_i(rs) ,  
-        .RTaddr_i(rt) ,  
-        .RDaddr_i(writeReg) ,  
-        .RDdata_i(aluResult)  , 
-        .RegWrite_i(regWrite),
-        .RSdata_o(rs_data) ,  
-        .RTdata_o(rt_data)   
+	    .rst_i(rst_i),     
+        .RSaddr_i(instr[25:21]),  
+        .RTaddr_i(instr[20:16]),  
+        .RDaddr_i(WriteReg),  
+        .RDdata_i(WriteRegData), 
+        .RegWrite_i(RegWrite),
+        .RSdata_o(Data1),  
+        .RTdata_o(Data2)   
         );
 	
 Decoder Decoder(
-        .instr_op_i(op), 
-        .RegWrite_o(regWrite), 
-        .ALU_op_o(aluOp),   
-        .ALUSrc_o(aluSrc),   
-        .RegDst_o(regDst_o),   
-        .Branch_o(branch),
-        .Jump_o(Jump_o),
-	.DataWrite_o(DataWrite_o),
-	.MemRead_o(MemRead_o),
-	.MemWrite_o(MemWrite_o),
-	.BranchType_o()  
-        );
+	.instr_op_i(instr[31:26]), 
+	.instr2_op_i(instr[5:0]), 
+    .Branch(Branch), 
+	.MemToReg(MemToReg), 
+	.BranchType(BranchType), 
+	.Jump(Jump), 
+	.MemRead(MemRead), 
+	.MemWrite(MemWrite), 
+	.ALUOp(ALUOp), 
+	.ALUSrc(ALUSrc), 
+	.RegWrite(RegWrite), 
+	.RegDest(RegDest), 
+	.JumpRegister(JumpRegister)
+	);
 
 ALU_Ctrl AC(
-        .funct_i(funct),   
-        .ALUOp_i(aluOp),   
-        .ALUCtrl_o(aluCtrl) 
+        .funct_i(instr[5:0]),   
+        .ALUOp_i(ALUOp),   
+        .ALUCtrl_o(ALUCtrl_out) 
         );
 	
 Sign_Extend SE(
-        .data_i(immediate),
-        .data_o(signExtend_o)
+        .data_i(instr[15:0]),
+        .data_o(SignExtended)
         );
 
 MUX_2to1 #(.size(32)) Mux_ALUSrc(
-        .data0_i(rt_data),
-        .data1_i(signExtend_o),
-        .select_i(aluSrc),
-        .data_o(aluSrc2)
+        .data0_i(Data2),
+        .data1_i(SignExtended),
+        .select_i(ALUSrc),
+        .data_o(Data2_R)
         );	
 		
 ALU ALU(
-        .src1_i(rs_data),
-	    .src2_i(aluSrc2),
-	    .ctrl_i(aluCtrl),
-	    .result_o(aluResult),
-		.zero_o(aluZero)
+        .src1_i(Data1),
+	    .src2_i(Data2_R),
+	    .ctrl_i(ALUCtrl_out),
+	    .result_o(ALUResult),
+		.zero_o(zero)
 	    );
-
+	
 Data_Memory Data_Memory(
 	.clk_i(clk_i),
-	.addr_i(aluResult),
-	.data_i(rs_data),
-	.MemRead_i(MemRead_o),
-	.MemWrite_i(MemWrite_o),
-	.data_o(MemData_o)
+	.addr_i(ALUResult),
+	.data_i(Data2),
+	.MemRead_i(MemRead),
+	.MemWrite_i(MemWrite),
+	.data_o(ReadData)
 	);
-		
+	
 Adder Adder2(
-        .src1_i(pc_adder_o),     
-	    .src2_i(branch_o),     
-	    .sum_o(branch_adder_o)      
+        .src1_i(pc_add4),     
+	    .src2_i(SignExtendShiftLeft),     
+	    .sum_o(add_pc_SESL)      
 	    );
 		
-Shift_Left_Two_32 Shifter(
-        .data_i(signExtend_o),
-        .data_o(branch_o)
+Shift_Left_Two_32 #(.size(32)) Shifter1(
+        .data_i(SignExtended),
+        .data_o(SignExtendShiftLeft)
         ); 		
-
-wire[31:0] Mux_PC_Source1_o;
-wire[31:0] Jump_PC;
-assign Jump_PC = { pc_out_o[31:28], instr_o[25:0], 2'b00};
-MUX_2to1 #(.size(32)) Mux_PC_Source1(
-        .data0_i(pc_adder_o),
-        .data1_i(branch_adder_o),
-        .select_i(pc_select),
-        .data_o(Mux_PC_Source1_o)
-        );
-
-MUX_2to1 #(.size(32)) Mux_PC_Source2(
-        .data0_i(Jump_PC),
-        .data1_i(Mux_PC_Source1_o),
-        .select_i(Jump_o),
-        .data_o(pc_in_i)
+		
+MUX_3to1 #(.size(32)) Mux_Mem_To_Reg(
+        .data0_i(ALUResult),
+        .data1_i(ReadData),
+		.data2_i(pc_add4),
+        .select_i(MemToReg),
+        .data_o(WriteRegData)
         );	
 
+and	G1(w1, Branch, zero);
+
+MUX_2to1 #(.size(32)) Mux_A(
+        .data0_i(pc_add4),
+        .data1_i(add_pc_SESL),
+        .select_i(w1),
+        .data_o(Jump_in_1)
+        );	
+
+MUX_2to1 #(.size(32)) Mux_Jump(
+        .data0_i(Jump_in_0),
+        .data1_i(Jump_in_1),
+        .select_i(Jump),
+        .data_o(Jump_out)
+        );	
+		
+MUX_2to1 #(.size(32)) Mux_Jump_Register(
+        .data0_i(Jump_out),
+        .data1_i(Data1),
+        .select_i(JumpRegister),
+        .data_o(pc_in)
+        );			
+		
 endmodule
-		  

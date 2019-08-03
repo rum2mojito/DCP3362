@@ -1,3 +1,4 @@
+//§õ©ù°a 0516327
 //Subject:     CO project 2 - Register File
 //--------------------------------------------------------------------------------
 //Version:     1
@@ -61,11 +62,4 @@ always @( posedge rst_i or posedge clk_i  ) begin
 	end
 end
 
-endmodule     
-
-
-
-
-
-                    
-                    
+endmodule

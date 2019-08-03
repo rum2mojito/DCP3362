@@ -14,7 +14,7 @@ beq s0,zero,re1		//§PÂ_¬O§_f(0)
 beq s0,t1,re1		//§PÂ_¬O§_f(1)
 addi a0,s0,-1
 jal fib
-add s1,zero,v0
+add s0,zero,v0
 addi a0,s0,-2
 jal fib
 add v0,v0,s1
