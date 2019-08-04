@@ -119,13 +119,13 @@ Z10 !s108 1564900065.000000
 R7
 n@decoder
 vInstr_Memory
-!s110 1564900404
+!s110 1564914921
 !i10b 1
 !s100 1L1Dl6<2J[oMfz[XQ3@D<1
 ITBL^9GYZcaDL_H0C5`[?12
 R1
 R2
-w1564900395
+w1564914911
 8C:/Users/office01/Desktop/DCP3362/lab3/code/Instr_Memory.v
 FC:/Users/office01/Desktop/DCP3362/lab3/code/Instr_Memory.v
 Z11 L0 12
@@ -133,7 +133,7 @@ R5
 r1
 !s85 0
 31
-!s108 1564900404.000000
+!s108 1564914921.000000
 !s107 C:/Users/office01/Desktop/DCP3362/lab3/code/Instr_Memory.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/office01/Desktop/DCP3362/lab3/code/Instr_Memory.v|
 !s101 -O0
