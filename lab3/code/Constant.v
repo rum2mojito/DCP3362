@@ -10,6 +10,7 @@
 `define LW 6'b100011
 `define SW 6'b101011
 `define JUMP 6'b000010
+`define JAL 6'b000011
 
 // ALU OP
 `define ALU_OP_R 3'b010
@@ -27,6 +28,7 @@
 `define ALU_FUNCT_AND 6'b100100
 `define ALU_FUNCT_OR 6'b100101
 `define ALU_FUNCT_SLT 6'b101010
+`define ALU_FUNCT_JR 6'b001000
 
 // ALU CTRL
 `define AND_CTRL 4'b0000

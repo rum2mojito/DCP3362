@@ -40,7 +40,7 @@ wire[4:0] rt;
 wire[4:0] rd;
 wire[15:0] immediate;
 
-wire regDst_o;
+wire[1:0] regDst_o;
 wire branch;
 wire aluSrc;
 wire regWrite;
@@ -67,6 +67,8 @@ wire MemWrite_o;
 wire[1:0] BranchType_o;
 
 wire[31:0] MemData_o;
+wire JumpReg_o;
+wire[31:0] JumpRes;
 
 assign op = instr_o[31:26];
 assign rs = instr_o[25:21];
@@ -94,9 +96,10 @@ Instr_Memory IM(
 	    .instr_o(instr_o)    
 	    );
 
-MUX_2to1 #(.size(5)) Mux_Write_Reg(
+MUX_3to1 #(.size(5)) Mux_Write_Reg(
         .data0_i(rt),
         .data1_i(rd),
+        .data2_i(32'hffffffff),
         .select_i(regDst_o),
         .data_o(writeReg)
         );	
@@ -131,7 +134,15 @@ Decoder Decoder(
 ALU_Ctrl AC(
         .funct_i(funct),   
         .ALUOp_i(aluOp),   
-        .ALUCtrl_o(aluCtrl) 
+        .ALUCtrl_o(aluCtrl),
+        .JumpReg_o(JumpReg_o) 
+        );
+
+MUX_2to1 #(.size(32)) Mux_Jump_Reg(
+        .data0_i(JumpRes),
+        .data1_i(rs_data),
+        .select_i(JumpReg_o),
+        .data_o(pc_in_i)
         );
 	
 Sign_Extend SE(
@@ -183,10 +194,11 @@ Data_Memory Data_Memory(
 	.data_o(MemData_o)
 	);
 
-MUX_3to1 #(.size(32)) Mux_MemToRegSrc(
+MUX_4to1 #(.size(32)) Mux_MemToRegSrc(
         .data0_i(aluResult),
         .data1_i(MemData_o),
         .data2_i(signExtend_o),
+        .data3_i(pc_adder_o),
         .select_i(MemToReg_o),
         .data_o(RegWrite_data)
         );
@@ -216,7 +228,7 @@ MUX_2to1 #(.size(32)) Mux_PC_Source2(
         .data0_i(Jump_PC),
         .data1_i(Mux_PC_Source1_o),
         .select_i(Jump_o),
-        .data_o(pc_in_i)
+        .data_o(JumpRes)
         );	
 
 endmodule

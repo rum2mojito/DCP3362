@@ -57,12 +57,12 @@ Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 
 Top level modules:
 	Reg_File
 
-} {} {}} C:/Users/office01/Desktop/DCP3362/lab3/code/Instr_Memory.v {1 {vlog -work work -stats=none C:/Users/office01/Desktop/DCP3362/lab3/code/Instr_Memory.v
+} {} {}} C:/Users/office01/Desktop/DCP3362/lab3/code/Decoder.v {1 {vlog -work work -stats=none C:/Users/office01/Desktop/DCP3362/lab3/code/Decoder.v
 Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
--- Compiling module Instr_Memory
+-- Compiling module Decoder
 
 Top level modules:
-	Instr_Memory
+	Decoder
 
 } {} {}} C:/Users/office01/Desktop/DCP3362/lab3/code/MUX_3to1.v {1 {vlog -work work -stats=none C:/Users/office01/Desktop/DCP3362/lab3/code/MUX_3to1.v
 Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
