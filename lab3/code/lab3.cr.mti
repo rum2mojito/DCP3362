@@ -12,12 +12,12 @@ Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 
 Top level modules:
 	ALU_Ctrl
 
-} {} {}} C:/Users/office01/Desktop/DCP3362/lab3/code/MUX_2to1.v {1 {vlog -work work -stats=none C:/Users/office01/Desktop/DCP3362/lab3/code/MUX_2to1.v
+} {} {}} C:/Users/office01/Desktop/DCP3362/lab3/code/Sign_Extend.v {1 {vlog -work work -stats=none C:/Users/office01/Desktop/DCP3362/lab3/code/Sign_Extend.v
 Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
--- Compiling module MUX_2to1
+-- Compiling module Sign_Extend
 
 Top level modules:
-	MUX_2to1
+	Sign_Extend
 
 } {} {}} C:/Users/office01/Desktop/DCP3362/lab3/code/testbench.v {1 {vlog -work work -stats=none C:/Users/office01/Desktop/DCP3362/lab3/code/testbench.v
 Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
@@ -25,13 +25,6 @@ Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 
 
 Top level modules:
 	testbench
-
-} {} {}} C:/Users/office01/Desktop/DCP3362/lab3/code/Sign_Extend.v {1 {vlog -work work -stats=none C:/Users/office01/Desktop/DCP3362/lab3/code/Sign_Extend.v
-Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
--- Compiling module Sign_Extend
-
-Top level modules:
-	Sign_Extend
 
 } {} {}} C:/Users/office01/Desktop/DCP3362/lab3/code/Adder.v {1 {vlog -work work -stats=none C:/Users/office01/Desktop/DCP3362/lab3/code/Adder.v
 Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
@@ -64,6 +57,13 @@ Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 
 Top level modules:
 	Decoder
 
+} {} {}} C:/Users/office01/Desktop/DCP3362/lab3/code/ProgramCounter.v {1 {vlog -work work -stats=none C:/Users/office01/Desktop/DCP3362/lab3/code/ProgramCounter.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module ProgramCounter
+
+Top level modules:
+	ProgramCounter
+
 } {} {}} C:/Users/office01/Desktop/DCP3362/lab3/code/Instr_Memory.v {1 {vlog -work work -stats=none C:/Users/office01/Desktop/DCP3362/lab3/code/Instr_Memory.v
 Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
 -- Compiling module Instr_Memory
@@ -71,12 +71,19 @@ Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 
 Top level modules:
 	Instr_Memory
 
-} {} {}} C:/Users/office01/Desktop/DCP3362/lab3/code/ProgramCounter.v {1 {vlog -work work -stats=none C:/Users/office01/Desktop/DCP3362/lab3/code/ProgramCounter.v
+} {} {}} C:/Users/office01/Desktop/DCP3362/lab3/code/Simple_Single_CPU.v {1 {vlog -work work -stats=none C:/Users/office01/Desktop/DCP3362/lab3/code/Simple_Single_CPU.v
 Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
--- Compiling module ProgramCounter
+-- Compiling module Simple_Single_CPU
 
 Top level modules:
-	ProgramCounter
+	Simple_Single_CPU
+
+} {} {}} C:/Users/office01/Desktop/DCP3362/lab3/code/PC_instr.v {1 {vlog -work work -stats=none C:/Users/office01/Desktop/DCP3362/lab3/code/PC_instr.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module PC_instr
+
+Top level modules:
+	PC_instr
 
 } {} {}} C:/Users/office01/Desktop/DCP3362/lab3/code/ALU.v {1 {vlog -work work -stats=none C:/Users/office01/Desktop/DCP3362/lab3/code/ALU.v
 Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015

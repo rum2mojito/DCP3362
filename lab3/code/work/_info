@@ -9,13 +9,13 @@ z2
 cModel Technology
 dC:/Modeltech_pe_edu_10.4a/examples
 vAdder
-Z0 !s110 1564817121
+Z0 !s110 1564831821
 !i10b 1
 !s100 T:Mkfl8`[Qe>3Y[MAdDAE0
 I?4J]gWZ2VVP@AN:L^JmV>3
 Z1 VDg1SIo80bB@j0V0VzS_@n1
 Z2 dC:/Users/office01/Desktop/DCP3362/lab3/code
-Z3 w1564816494
+Z3 w1564831775
 8C:/Users/office01/Desktop/DCP3362/lab3/code/Adder.v
 FC:/Users/office01/Desktop/DCP3362/lab3/code/Adder.v
 Z4 L0 13
@@ -23,7 +23,7 @@ Z5 OP;L;10.4a;61
 r1
 !s85 0
 31
-Z6 !s108 1564817121.000000
+Z6 !s108 1564831821.000000
 !s107 C:/Users/office01/Desktop/DCP3362/lab3/code/Adder.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/office01/Desktop/DCP3362/lab3/code/Adder.v|
 !s101 -O0
@@ -97,7 +97,7 @@ R6
 R7
 n@data_@memory
 vDecoder
-R0
+Z9 !s110 1564831822
 !i10b 1
 !s100 j17[_>8kdCMG5J5E^H?]92
 IchVD=6OX97N`=Xl1d8j@b3
@@ -111,7 +111,7 @@ R5
 r1
 !s85 0
 31
-R6
+Z10 !s108 1564831822.000000
 !s107 Constant.v|C:/Users/office01/Desktop/DCP3362/lab3/code/Decoder.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/office01/Desktop/DCP3362/lab3/code/Decoder.v|
 !s101 -O0
@@ -119,7 +119,7 @@ R6
 R7
 n@decoder
 vInstr_Memory
-Z9 !s110 1564817122
+R9
 !i10b 1
 !s100 1L1Dl6<2J[oMfz[XQ3@D<1
 ITBL^9GYZcaDL_H0C5`[?12
@@ -128,12 +128,12 @@ R2
 R3
 8C:/Users/office01/Desktop/DCP3362/lab3/code/Instr_Memory.v
 FC:/Users/office01/Desktop/DCP3362/lab3/code/Instr_Memory.v
-Z10 L0 12
+Z11 L0 12
 R5
 r1
 !s85 0
 31
-R6
+R10
 !s107 C:/Users/office01/Desktop/DCP3362/lab3/code/Instr_Memory.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/office01/Desktop/DCP3362/lab3/code/Instr_Memory.v|
 !s101 -O0
@@ -155,13 +155,57 @@ R5
 r1
 !s85 0
 31
-Z11 !s108 1564817122.000000
+R10
 !s107 C:/Users/office01/Desktop/DCP3362/lab3/code/MUX_2to1.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/office01/Desktop/DCP3362/lab3/code/MUX_2to1.v|
 !s101 -O0
 !i113 1
 R7
 n@m@u@x_2to1
+vMUX_3to1
+R9
+!i10b 1
+!s100 LigC:iEGQ_P]Hd;@H?ZGJ1
+I@Gkml;XIb6`U0zR2H;c[S3
+R1
+R2
+Z12 w1539863740
+8C:/Users/office01/Desktop/DCP3362/lab3/code/MUX_3to1.v
+FC:/Users/office01/Desktop/DCP3362/lab3/code/MUX_3to1.v
+R11
+R5
+r1
+!s85 0
+31
+R10
+!s107 C:/Users/office01/Desktop/DCP3362/lab3/code/MUX_3to1.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/office01/Desktop/DCP3362/lab3/code/MUX_3to1.v|
+!s101 -O0
+!i113 1
+R7
+n@m@u@x_3to1
+vPC_instr
+R9
+!i10b 1
+!s100 Q7eSX1LaS=AU;U]PeRkBl3
+IlTWcS1nFbX9bemZ7EzXPC1
+R1
+R2
+R12
+8C:/Users/office01/Desktop/DCP3362/lab3/code/PC_instr.v
+FC:/Users/office01/Desktop/DCP3362/lab3/code/PC_instr.v
+L0 24
+R5
+r1
+!s85 0
+31
+R10
+!s107 C:/Users/office01/Desktop/DCP3362/lab3/code/PC_instr.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/office01/Desktop/DCP3362/lab3/code/PC_instr.v|
+!s101 -O0
+!i113 1
+R7
+n@p@c_instr
 vProgramCounter
 R9
 !i10b 1
@@ -177,7 +221,7 @@ R5
 r1
 !s85 0
 31
-R11
+R10
 !s107 C:/Users/office01/Desktop/DCP3362/lab3/code/ProgramCounter.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/office01/Desktop/DCP3362/lab3/code/ProgramCounter.v|
 !s101 -O0
@@ -199,7 +243,7 @@ R5
 r1
 !s85 0
 31
-R11
+R10
 !s107 C:/Users/office01/Desktop/DCP3362/lab3/code/Reg_File.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/office01/Desktop/DCP3362/lab3/code/Reg_File.v|
 !s101 -O0
@@ -221,7 +265,7 @@ R5
 r1
 !s85 0
 31
-R11
+R10
 !s107 C:/Users/office01/Desktop/DCP3362/lab3/code/Shift_Left_Two_32.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/office01/Desktop/DCP3362/lab3/code/Shift_Left_Two_32.v|
 !s101 -O0
@@ -243,7 +287,7 @@ R5
 r1
 !s85 0
 31
-R11
+R10
 !s107 C:/Users/office01/Desktop/DCP3362/lab3/code/Sign_Extend.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/office01/Desktop/DCP3362/lab3/code/Sign_Extend.v|
 !s101 -O0
@@ -251,21 +295,21 @@ R11
 R7
 n@sign_@extend
 vSimple_Single_CPU
-!s110 1564822319
+R9
 !i10b 1
 !s100 Eb^e3oX8boOj1nMm6Xf593
 I7[8UG8GbX[5^O1?Q@^H`P2
 R1
 R2
-w1564822303
+R3
 8C:/Users/office01/Desktop/DCP3362/lab3/code/Simple_Single_CPU.v
 FC:/Users/office01/Desktop/DCP3362/lab3/code/Simple_Single_CPU.v
-R10
+R11
 R5
 r1
 !s85 0
 31
-!s108 1564822319.000000
+R10
 !s107 C:/Users/office01/Desktop/DCP3362/lab3/code/Simple_Single_CPU.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/office01/Desktop/DCP3362/lab3/code/Simple_Single_CPU.v|
 !s101 -O0
@@ -279,7 +323,7 @@ R9
 I_[0Sde2n9nMk2g^Wh6Bm93
 R1
 R2
-R3
+w1564816494
 8C:/Users/office01/Desktop/DCP3362/lab3/code/testbench.v
 FC:/Users/office01/Desktop/DCP3362/lab3/code/testbench.v
 L0 23
@@ -287,7 +331,7 @@ R5
 r1
 !s85 0
 31
-R11
+R10
 !s107 C:/Users/office01/Desktop/DCP3362/lab3/code/testbench.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/office01/Desktop/DCP3362/lab3/code/testbench.v|
 !s101 -O0

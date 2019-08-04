@@ -5,38 +5,35 @@
 //--------------------------------------------------------------------------------
 //Writer:      Luke
 //----------------------------------------------
-//Date:        
+//Date:        2010/8/17
 //----------------------------------------------
 //Description: 
 //--------------------------------------------------------------------------------
-     
-module MUX_2to1(
-               data0_i,
-               data1_i,
-               select_i,
-               data_o
-               );
-
-parameter size = 32;			   
-			
+module MUX_3to1(
+                data0_i,
+                data1_i,
+                data2_i,
+                select_i,
+                data_o
+                   );		   
+parameter size = 32;				
 //I/O ports               
 input   [size-1:0] data0_i;          
 input   [size-1:0] data1_i;
-input              select_i;
+input   [size-1:0] data2_i;
+input   [	  1:0] select_i;
 output  [size-1:0] data_o; 
 
 //Internal Signals
-reg     [size-1:0] data_o;
+reg     [size-1:0] result;
 
 //Main function
-always@(*) begin
-    if(select_i == 1'b0) begin
-        data_o <= data0_i;
-    end else if(select_i == 1'b1) begin
-        data_o <= data1_i;
-    end
+always@(*)begin
+    if(select_i == 2'd0) result = data0_i;
+    else if(select_i == 2'd1) result = data1_i;
+    else if(select_i == 2'd2) result = data2_i;
 end
 
-endmodule      
-          
-          
+assign data_o = result;
+
+endmodule
