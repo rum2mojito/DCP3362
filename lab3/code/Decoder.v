@@ -19,7 +19,7 @@ module Decoder(
 	RegDst_o,
 	Branch_o,
 	Jump_o,
-	DataWrite_o,
+	MemToReg_o,
 	MemRead_o,
 	MemWrite_o,
 	BranchType_o
@@ -34,10 +34,10 @@ output         ALUSrc_o;
 output         RegDst_o;
 output         Branch_o;
 output         Jump_o;
-output         DataWrite_o;
+output [1:0]   MemToReg_o;
 output         MemRead_o;
 output         MemWrite_o;
-output         BranchType_o;
+output    [1:0]     BranchType_o;
  
 //Internal Signals
 reg    [3-1:0] ALU_op_o;
@@ -46,10 +46,10 @@ reg            RegWrite_o;
 reg            RegDst_o;
 reg            Branch_o;
 reg            Jump_o;
-reg            DataWrite_o;
+reg    [1:0]   MemToReg_o;
 reg            MemRead_o;
 reg            MemWrite_o;
-reg            BranchType_o;
+reg     [1:0]       BranchType_o;
 
 //Parameter
 
@@ -63,10 +63,10 @@ always@(*) begin
 		RegDst_o <= 1'b1;
 		Branch_o <= 1'b0;
 		Jump_o <= 1'b1;
-		DataWrite_o <= 1'b0;
+		MemToReg_o <= 2'b00;
 		MemRead_o <= 1'b0;
 		MemWrite_o <= 1'b0;
-		BranchType_o <= 1'bx;
+		BranchType_o <= 2'bxx;
 	end else if(instr_op_i == `ADDI) begin
 		ALU_op_o <= `ALU_OP_ADDI;
 		ALUSrc_o <= 1'b1;
@@ -74,10 +74,10 @@ always@(*) begin
 		RegDst_o <= 1'b0;
 		Branch_o <= 1'b0;
 		Jump_o <= 1'b1;
-		DataWrite_o <= 1'b0;
+		MemToReg_o <= 2'b00;
 		MemRead_o <= 1'b0;
 		MemWrite_o <= 1'b0;
-		BranchType_o <= 1'bx;
+		BranchType_o <= 2'bxx;
 	end else if(instr_op_i == `SLTI) begin
 		ALU_op_o <= `ALU_OP_SLTI;
 		ALUSrc_o <= 1'b1;
@@ -85,7 +85,7 @@ always@(*) begin
 		RegDst_o <= 1'b0;
 		Branch_o <= 1'b0;
 		Jump_o <= 1'b1;
-		DataWrite_o <= 1'b0;
+		MemToReg_o <= 2'b00;
 		MemRead_o <= 1'b0;
 		MemWrite_o <= 1'b0;
 		BranchType_o <= 1'bx;
@@ -96,21 +96,21 @@ always@(*) begin
 		RegDst_o <= 1'b0;
 		Branch_o <= 1'b1;
 		Jump_o <= 1'b1;
-		DataWrite_o <= 1'b0;
+		MemToReg_o <= 2'bxx;
 		MemRead_o <= 1'b0;
 		MemWrite_o <= 1'b0;
-		BranchType_o <= 1'bx;
+		BranchType_o <= 2'b00;
 	end else if(instr_op_i == `LW) begin
 		ALU_op_o <= `ALU_OP_LW_SW;
 		ALUSrc_o <= 1'b1;
 		RegWrite_o <= 1'b1;
-		RegDst_o <= 1'b1;
+		RegDst_o <= 1'b0;
 		Branch_o <= 1'b0;
 		Jump_o <= 1'b1;
-		DataWrite_o <= 1'b0;
+		MemToReg_o <= 2'b01;
 		MemRead_o <= 1'b1;
 		MemWrite_o <= 1'b0;
-		BranchType_o <= 1'bx;
+		BranchType_o <= 2'bxx;
 	end else if(instr_op_i == `SW) begin
 		ALU_op_o <= `ALU_OP_LW_SW;
 		ALUSrc_o <= 1'b1;
@@ -118,10 +118,10 @@ always@(*) begin
 		RegDst_o <= 1'bx;
 		Branch_o <= 1'b0;
 		Jump_o <= 1'b1;
-		DataWrite_o <= 1'b1;
+		MemToReg_o <= 2'bxx;
 		MemRead_o <= 1'b0;
 		MemWrite_o <= 1'b1;
-		BranchType_o <= 1'bx;
+		BranchType_o <= 2'bxx;
 	end else if(instr_op_i == `JUMP) begin
 		ALU_op_o <= 3'bxxx;
 		ALUSrc_o <= 1'bx;
@@ -129,10 +129,10 @@ always@(*) begin
 		RegDst_o <= 1'bx;
 		Branch_o <= 1'bx;
 		Jump_o <= 1'b0;
-		DataWrite_o <= 1'b0;
+		MemToReg_o <= 2'bxx;
 		MemRead_o <= 1'b0;
 		MemWrite_o <= 1'b0;
-		BranchType_o <= 1'bx;
+		BranchType_o <= 2'bxx;
 	end else begin
 		ALU_op_o <= 3'bxxx;
 		ALUSrc_o <= 1'bx;
@@ -140,10 +140,10 @@ always@(*) begin
 		RegDst_o <= 1'bx;
 		Branch_o <= 1'bx;
 		Jump_o <= 1'bx;
-		DataWrite_o <= 1'b0;
+		MemToReg_o <= 2'bxx;
 		MemRead_o <= 1'b0;
 		MemWrite_o <= 1'b0;
-		BranchType_o <= 1'bx;
+		BranchType_o <= 2'bxx;
 	end
 end
 

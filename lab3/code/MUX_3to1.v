@@ -16,7 +16,7 @@ module MUX_3to1(
                 select_i,
                 data_o
                    );		   
-parameter size = 32;				
+parameter size;				
 //I/O ports               
 input   [size-1:0] data0_i;          
 input   [size-1:0] data1_i;
